@@ -2,13 +2,11 @@ import { NextFunction, Request, Response } from "express"
 import { logger } from "../config/logger"
 import { storage } from "../storage/main"
 
-export class SampleController {
+export class Post {
     async create(req: Request, res: Response, next: NextFunction) {
-        console.log("here1")
     }
 
     async update(req: Request, res: Response, next: NextFunction) {
-        console.log("here2")
     }
 
     async find(req: Request, res: Response, next: NextFunction) {
@@ -32,6 +30,5 @@ export class SampleController {
     }
 
     async delete(req: Request, res: Response, next: NextFunction) {
-        console.log("here3")
     }
 }

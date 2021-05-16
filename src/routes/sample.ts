@@ -14,3 +14,5 @@ router
     .put(controller.update)
     .patch(controller.update)
     .delete(controller.delete)
+
+export default router

@@ -1,7 +1,7 @@
 import { SampleRepo, ISampleAllResponse } from "../repo/sample"
 import Sample, { ISample } from "../../models/sample"
 import { findAllQuery } from "../../types/querymodel"
-import log from "npmlog"
+import { logger } from "../../config/logger"
 
 let scope = "storage.sample: "
 export class SampleStorage implements SampleRepo {
@@ -20,13 +20,13 @@ export class SampleStorage implements SampleRepo {
             let dbObj = await Sample.findOne({ slug, lang })
 
             if (!dbObj) {
-                log.warn(scope, "get", `failed to findOne db object with slug: ${slug} and ${lang}`)
+                logger.warn(scope, "get", `failed to findOne db object with slug: ${slug} and ${lang}`)
                 throw new Error("Db object is not found")
             }
 
             return dbObj
         } catch (error) {
-            log.error(scope, "get", error.message)
+            logger.error(scope, "get", error.message)
             throw new Error("Failed to get the object from DB")
         }
     }

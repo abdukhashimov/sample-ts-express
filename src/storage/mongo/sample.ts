@@ -13,13 +13,11 @@ export class SampleStorage implements SampleRepo {
         return ""
     }
 
-    async Delete(slug: string): Promise<any> {
-        
-    }
+    async Delete(slug: string): Promise<any> {}
 
     async Get(slug: string, lang: string): Promise<ISample> {
         try {
-            let dbObj = await Sample.findOne({slug, lang})
+            let dbObj = await Sample.findOne({ slug, lang })
 
             if (!dbObj) {
                 log.warn(scope, "get", `failed to findOne db object with slug: ${slug} and ${lang}`)
@@ -37,4 +35,3 @@ export class SampleStorage implements SampleRepo {
         throw new Error("not implemented yet")
     }
 }
-

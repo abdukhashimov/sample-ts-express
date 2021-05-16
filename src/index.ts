@@ -8,10 +8,10 @@ import { logger } from "./config/logger"
         db.connect()
 
         app.listen(config.HttpPort, () => {
-            logger.info("INDEX", `Server is running on port: ${config.HttpPort}`)
+            logger.info(`INDEX: Server is running on port: ${config.HttpPort}`)
         })
 
-        logger.info("INDEX", "Database connection initialized.")
+        logger.info("INDEX: Database connection initialized.")
     } catch (e) {
         throw new Error(`DB connection error: ${e}`)
     }

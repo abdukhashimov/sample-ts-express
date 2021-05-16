@@ -20,7 +20,7 @@ interface mongoDBInfo {
     database: string
 }
 
-function getMongoDBUrl(auth: boolean, dbInfo: mongoDBInfo): string {
+function getMongoDBUrl(auth: boolean, dbInfo?: mongoDBInfo): string {
     let url: string
     if (auth) {
         return `mongodb://localhost:27017/${config.MongoDatabase}`
@@ -50,10 +50,11 @@ export default class Database {
     })
 
     constructor() {
-        if (process.env.MONGO_AUTH_DISABLE) {
-            this.url = `mongodb://localhost:27017/${process.env.MONGODB_SERVER}`
+        if (config.MongoAuthDisable) {
+            this.url = getMongoDBUrl(false)
         }
-        console.log("DATABASE URL:", this.url)
+        
+        log.info("DATABASE URL: ", this.url)
     }
 
     connect() {

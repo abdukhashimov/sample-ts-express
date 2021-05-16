@@ -1,10 +1,10 @@
 import {SampleStorage} from "./mongo/sample"
 interface IStorage {
-    sample():SampleStorage
+    sample:SampleStorage
 }
 
 export class Storage implements IStorage {
-    sample():SampleStorage {
-       return new SampleStorage()
-    }
+    sample = new SampleStorage()
 }
+
+let storage = new Storage()

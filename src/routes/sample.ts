@@ -9,7 +9,7 @@ const controller = new SampleController(storage)
 router.route("/").get(controller.find).post(controller.create)
 
 router
-    .route("/:id")
+    .route("/:slug")
     .get(controller.get)
     .put(controller.update)
     .patch(controller.update)

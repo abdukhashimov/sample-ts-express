@@ -17,7 +17,16 @@ export class SampleController {
         throw new Error("not implemented yet")
     }
 
-    async get(req: Request, res: Response, next: NextFunction) {}
+    async get(req: Request, res: Response, next: NextFunction) {
+        try {
+            let lang = req.query.lang || "ru"
+            let slug = req.params.slug
+
+            const dbRes = await this.storage.sample.get()
+        } catch (error) {
+            
+        }
+    }
 
     async delete(req: Request, res: Response, next: NextFunction) {}
 }

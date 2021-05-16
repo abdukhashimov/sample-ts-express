@@ -48,9 +48,8 @@ export default class Database {
         port: config.MongoPort,
         username: config.MongoUser
     })
-    constructor() {
-        // eslint-disable-next-line max-len
 
+    constructor() {
         if (process.env.MONGO_AUTH_DISABLE) {
             this.url = `mongodb://localhost:27017/${process.env.MONGODB_SERVER}`
         }

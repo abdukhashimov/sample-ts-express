@@ -1,4 +1,3 @@
-import "reflect-metadata"
 import app from "./app"
 import DB from "./core/db"
 import config from "./config/config"

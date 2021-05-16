@@ -12,7 +12,6 @@ export default class Database {
     url: string =
         process.env.MONGO_URL ||
         `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_SERVER}`
-    // url: string = `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_SERVER}`
 
     constructor() {
         // eslint-disable-next-line max-len

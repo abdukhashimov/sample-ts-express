@@ -1,5 +1,5 @@
-import mongoose, {Schema, Document} from "mongoose"
-import { ITag } from "./tags";
+import mongoose, { Schema, Document } from "mongoose"
+import { ITag } from "./tags"
 
 export interface ISample extends Document {
     name: string
@@ -10,16 +10,18 @@ export interface ISample extends Document {
 let Sample = new Schema({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     description: {
-        type: String,
+        type: String
     },
     tags: [
         {
-            type: String,
+            type: String
         }
     ]
 })
 
-export default  mongoose.model<ISample>("Sample", Sample)
+module.exports = {
+    Sample: mongoose.model<ISample>("Sample", Sample)
+}

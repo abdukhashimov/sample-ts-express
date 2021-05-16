@@ -28,7 +28,10 @@ export const logger = winston.createLogger({
 });
 
 if(process.env.NODE_ENV !== 'production'){
-    const consoleLogFormat = winston.format.printf(info => `${info.timestamp} ${info.level} [${info.label}]: ${info.message}`)
+    const consoleLogFormat = winston.format.printf(info => {
+        return `${info.timestamp} ${info.level} [${info.label}]: ${info.message}`
+    })
+
     logger.add(new winston.transports.Console({
         format: winston.format.combine(
             winston.format.colorize(),

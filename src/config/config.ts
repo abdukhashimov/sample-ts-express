@@ -26,4 +26,4 @@ function getConf(name:string, def:string = ''):string {
     return def;
 }
 
-module.exports = config;
+export default config

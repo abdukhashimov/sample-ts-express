@@ -3,8 +3,6 @@ interface IStorage {
     sample:SampleStorage
 }
 
-export class Storage implements IStorage {
-    sample = new SampleStorage()
+export let storage:IStorage = {
+    sample: new SampleStorage()
 }
-
-let storage = new Storage()

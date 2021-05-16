@@ -1,10 +1,8 @@
 import { Router } from "express"
 import { SampleController } from "../controllers/sample"
-import { Storage } from "../storage/main"
 
 const router = Router({ mergeParams: true })
-const storage = new Storage()
-const controller = new SampleController(storage)
+const controller = new SampleController()
 
 router.route("/").get(controller.find).post(controller.create)
 

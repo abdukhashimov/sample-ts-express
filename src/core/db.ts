@@ -1,22 +1,53 @@
 import mongoose from "mongoose"
 import * as log from "loglevel"
+import config from "../config/config"
 
 const db = mongoose.connection
 db.on("error", () => {
     log.error("DB: mongo", "mongo db connection is not open")
     log.warn("killing myself so that container restarts")
-    process.exit(0)
 })
 
 db.once("open", () => {
     log.info("DB: mongo db connection is established")
 })
 
-export default class Database {
-    url: string =
-        process.env.MONGO_URL ||
-        `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@${process.env.MONGODB_SERVER}`
+interface mongoDBInfo {
+    host: string
+    username: string
+    port: number
+    password: string
+    database: string
+}
 
+function getMongoDBUrl(auth: boolean, dbInfo: mongoDBInfo): string {
+    let url: string
+    if (auth) {
+        return `mongodb://localhost:27017/${config.MongoDatabase}`
+    }
+
+    url =
+        "mongodb://" +
+        config.MongoUser +
+        ":" +
+        config.MongoPassword +
+        "@" +
+        config.MongoHost +
+        ":" +
+        config.MongoPort.toString() +
+        "/" +
+        config.MongoDatabase
+
+    return url
+}
+export default class Database {
+    url: string = getMongoDBUrl(false, {
+        database: config.MongoDatabase,
+        host: config.MongoHost,
+        password: config.MongoPassword,
+        port: config.MongoPort,
+        username: config.MongoUser
+    })
     constructor() {
         // eslint-disable-next-line max-len
 
@@ -38,7 +69,7 @@ export default class Database {
             },
             (error) => {
                 if (error) {
-                    console.log("MongoDB Connection error:", error)
+                    log.error("MongoDB Connection error:", error)
                     process.exit(1)
                 }
             }

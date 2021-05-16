@@ -3,6 +3,8 @@ import DB from "./core/db"
 import config from "./config/config"
 import * as log from "loglevel"
 
+log.setDefaultLevel("trace")
+
 ;(async function () {
     try {
         const db = new DB()

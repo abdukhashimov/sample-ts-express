@@ -1,15 +1,15 @@
 import mongoose from "mongoose"
-import * as log from "loglevel"
+import log from "npmlog"
 import config from "../config/config"
 
 const db = mongoose.connection
 db.on("error", () => {
     log.error("DB: mongo", "mongo db connection is not open")
-    log.warn("killing myself so that container restarts")
+    log.info("DB:","killing myself so that container restarts")
 })
 
 db.once("open", () => {
-    log.info("DB: mongo db connection is established")
+    log.info("DB", "mongo db connection is established")
 })
 
 interface mongoDBInfo {
@@ -54,7 +54,7 @@ export default class Database {
             this.url = getMongoDBUrl(config.MongoAuthDisable)
         }
 
-        log.info("DATABASE URL: ", this.url)
+        log.info("DB", "DATABASE URL: ", this.url)
     }
 
     connect() {
@@ -69,7 +69,7 @@ export default class Database {
             },
             (error) => {
                 if (error) {
-                    log.error("MongoDB Connection error:", error)
+                    log.error("DB", "MongoDB Connection error:", error)
                     process.exit(1)
                 }
             }

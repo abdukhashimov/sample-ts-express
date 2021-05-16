@@ -1,7 +1,7 @@
 import { SampleRepo, ISampleAllResponse } from "../repo/sample"
 import Sample, { ISample } from "../../models/sample"
 import { findAllQuery } from "../../types/querymodel"
-import * as log from "loglevel"
+import log from "npmlog"
 
 let scope = "storage.sample: "
 export class SampleStorage implements SampleRepo {

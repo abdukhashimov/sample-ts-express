@@ -1,9 +1,7 @@
 import app from "./app"
 import DB from "./core/db"
 import config from "./config/config"
-import * as log from "loglevel"
-
-log.setDefaultLevel("trace")
+import log from "npmlog"
 
 ;(async function () {
     try {
@@ -11,11 +9,10 @@ log.setDefaultLevel("trace")
         db.connect()
 
         app.listen(config.HttpPort, () => {
-            log.info(`Server is running on port: ${config.HttpPort}`)
+            log.info("INDEX", `Server is running on port: ${config.HttpPort}`)
         })
 
-        // initSocket(server)
-        console.log("Database connection initialized.")
+        log.info("INDEX", "Database connection initialized.")
     } catch (e) {
         throw new Error(`DB connection error: ${e}`)
     }

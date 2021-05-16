@@ -5,17 +5,17 @@ import * as log from "loglevel"
 
 let scope = "storage.sample: "
 export class SampleStorage implements SampleRepo {
-    async Create(payload: ISample): Promise<string> {
+    async create(payload: ISample): Promise<string> {
         throw new Error("not implemented yet")
     }
 
-    async Update(slug: string, payload: ISample): Promise<string> {
+    async update(slug: string, payload: ISample): Promise<string> {
         return ""
     }
 
-    async Delete(slug: string): Promise<any> {}
+    async delete(slug: string): Promise<any> {}
 
-    async Get(slug: string, lang: string): Promise<ISample> {
+    async get(slug: string, lang: string): Promise<ISample> {
         try {
             let dbObj = await Sample.findOne({ slug, lang })
 
@@ -31,7 +31,7 @@ export class SampleStorage implements SampleRepo {
         }
     }
 
-    async FindAll(query: findAllQuery): Promise<ISampleAllResponse> {
+    async findAll(query: findAllQuery): Promise<ISampleAllResponse> {
         throw new Error("not implemented yet")
     }
 }

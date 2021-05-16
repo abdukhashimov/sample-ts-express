@@ -7,9 +7,9 @@ export interface ISampleAllResponse {
 }
 
 export interface SampleRepo {
-    Create(payload:ISample):Promise<string | never>
-    Update(slug:string, payload:ISample):Promise<string>
-    Delete(slug:string):Promise<any>
-    Get(slug:string, lang:string):Promise<ISample>
-    FindAll(query:findAllQuery):Promise<ISampleAllResponse>
+    create(payload:ISample):Promise<string | never>
+    update(slug:string, payload:ISample):Promise<string>
+    delete(slug:string):Promise<any>
+    get(slug:string, lang:string):Promise<ISample>
+    findAll(query:findAllQuery):Promise<ISampleAllResponse>
 }

@@ -7,6 +7,7 @@ interface Config {
     MongoDatabase:string
     MongoPassword:string
     MongoUser:string
+    MongoAuthDisable:boolean
 }
 
 let config:Config = {
@@ -16,6 +17,7 @@ let config:Config = {
     MongoDatabase: getConf("MONGO_DATABASE", "sample_project"),
     MongoPassword: getConf("MONGO_PASSWORD", ""),
     MongoUser: getConf("MONGO_USER", ""),
+    MongoAuthDisable: true,
 }
 
 function getConf(name:string, def:string = ''):string {

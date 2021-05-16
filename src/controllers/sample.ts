@@ -19,12 +19,13 @@ export class SampleController {
 
     async get(req: Request, res: Response, next: NextFunction) {
         try {
-            let lang = req.query.lang || "ru"
+            let lang = req.query.lang?.toString() || "ru"
             let slug = req.params.slug
 
-            const dbRes = await this.storage.sample.get()
+            const dbRes = await this.storage.sample.get(slug, lang)
+            return dbRes
         } catch (error) {
-            
+            throw new Error(error.message)
         }
     }
 

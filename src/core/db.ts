@@ -51,9 +51,9 @@ export default class Database {
 
     constructor() {
         if (config.MongoAuthDisable) {
-            this.url = getMongoDBUrl(false)
+            this.url = getMongoDBUrl(config.MongoAuthDisable)
         }
-        
+
         log.info("DATABASE URL: ", this.url)
     }
 

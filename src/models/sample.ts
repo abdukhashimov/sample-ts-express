@@ -22,6 +22,4 @@ let Sample = new Schema({
     ]
 })
 
-module.exports = {
-    Sample: mongoose.model<ISample>("Sample", Sample)
-}
+export default mongoose.model<ISample>("Sample", Sample)
